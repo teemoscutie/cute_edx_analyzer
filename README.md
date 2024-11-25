@@ -82,9 +82,9 @@ For bug reports or feature requests, please open an issue in the GitHub reposito
 
 If you have any questions, suggestions, or need further assistance, feel free to reach out to me:
 
-- **Name**: [Your Full Name]
-- **Email**: [your.email@example.com]
-- **GitHub**: [https://github.com/yourusername](https://github.com/yourusername)
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
+- **Name**: Linh Ngoc Tram Zimmermann
+- **Email**: teemoscutie@outlook.de
+- **GitHub**: [https://github.com/yourusername](https://github.com/teemoscutie)
+- **LinkedIn**: [Your LinkedIn Profile]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/linh-zimmermann)
 
 I am happy to help or receive feedback regarding this project!
