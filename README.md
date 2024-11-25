@@ -1,6 +1,6 @@
 # EDX Spectrum Analyzer
 ## Description
-This Python script provides a graphical user interface (GUI) for the analysis of EDX spectra. It enables the import of multiple spectrum files, background correction, and identification of element peaks based on their characteristic energies.
+This Python script provides a graphical user interface (GUI) for the analysis of EDX spectra. It enables the import of multiple spectrum files, background correction, and identification of element peaks based on their characteristic energies. This is my first script designed for non-python speakers.
 
 ---
 
@@ -78,7 +78,7 @@ Modify the parameters in the find_peaks function to adjust the sensitivity of pe
 
 ---
 ## Reporting Issues
-For bug reports or feature requests, please open an issue in the GitHub repository: [GitHub Issues](https://github.com/teemoscutie/cute-edx-analyzer/issues)
+For bug reports or feature requests, please open an issue in the GitHub repository: [GitHub Issues](https://github.com/teemoscutie/cute_edx_analyzer/issues)
 
 If you have any questions, suggestions, or need further assistance, feel free to reach out to me:
 
