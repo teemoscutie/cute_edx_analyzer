@@ -84,7 +84,7 @@ If you have any questions, suggestions, or need further assistance, feel free to
 
 - **Name**: Linh Ngoc Tram Zimmermann
 - **Email**: teemoscutie@outlook.de
-- **GitHub**: [https://github.com/yourusername](https://github.com/teemoscutie)
-- **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/linh-zimmermann)
+- **GitHub**: [https://github.com/teemoscutie](https://github.com/teemoscutie)
+- **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/linh-zimmermann)
 
 I am happy to help or receive feedback regarding this project!
