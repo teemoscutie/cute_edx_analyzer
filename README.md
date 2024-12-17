@@ -1,6 +1,6 @@
 # EDX Spectrum Analyzer
 ## Description
-This Python script provides a **graphical user interface** for analyzing **Energy Dispersive X-ray Spectroscopy** (EDX) spectra. It enables users without python knowledge to load, process, and compare multiple EDX spectra. It aims to identify peaks in the future, but is currently only for referece purposes for manual element identification.
+This Python script provides a **graphical user interface** (GUI) for analyzing **Energy Dispersive X-ray Spectroscopy** (EDX) spectra. It enables users without python knowledge to load, process, and compare multiple EDX spectra. It aims to identify peaks in the future, but is currently only for referece purposes for manual element identification.
 
 ### Background correction is currently disabled due to implementation issues!
 
@@ -16,12 +16,12 @@ Make sure to download python if not installed. Also, check if pip is installed:
 
 ```bash
 pip --version
-´´´
+```
 If not, install pip with:
 
 ```bash
 python -m ensurepip --upgrade
-´´´
+```
 
 ### Installation of Required Libraries
 Ensure the following Python libraries are installed:
