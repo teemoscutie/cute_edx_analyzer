@@ -1,6 +1,8 @@
 # EDX Spectrum Analyzer
 ## Description
-This Python script provides a graphical user interface (GUI) for the analysis of EDX spectra. It enables the import of multiple spectrum files, background correction, and identification of element peaks based on their characteristic energies. This is my first script designed for non-python speakers.
+This Python script provides a graphical user interface (GUI) for the analysis of EDX spectra. It enables the import of multiple spectrum files, -background correction-, and identification of element peaks based on their characteristic energies. This is my first script designed for non-python speakers with a GUI, so its currently quiet ugly.
+
+### Background correction is currently disabled due to implementation issues!
 
 ---
 
@@ -22,16 +24,14 @@ pip install pandas numpy scipy matplotlib plotly tkinter
 ### Characteristic Energies
 Ensure the file containing characteristic energies is prepared as follows:
 
-- File name: characteristic_energies.csv
-- Must be located in the same directory as the script.
+- File name: Energies_from_NIST.csv
 - File structure (example):
   
-  | Element | Line  | Energy_keV |
-  |---------|-------|------------|
-  | Fe      | Kα    | 6.40       |
-  | Cu      | Lβ    | 8.04       |
+  | Element | Transition  | Theory (eV) | Unc (eV) | Direct (eV)  | Unc. (eV) |
+  |---------|-------------|-------------|----------|--------------|-----------|
+  | Ne      | KL1         | 817.69      |0.56      |              |           |
+  | Ne      | KL2         | 849.09      |0.54      |848.61        |0.26       |
 
-The file must include at least the columns Element, Line, and Energy_keV.
 
 ---
 
@@ -41,11 +41,13 @@ The file must include at least the columns Element, Line, and Energy_keV.
 2. Run the script with the following command:
 
    ```bash
-   python edx_analyzer.py
+   python cute_edx_analyzer.py
    ```
    
 3. A GUI will open. Select the desired spectrum files (up to 4 files) and optionally a background file.
-Start the analysis using the GUI's button.
+4. Next, add the Reference data Energies_from_NIST.csv or equivalent.
+5. Then, select Groups that should be shown at the plot. For biological substrates a preset is given.
+6. Start analysis with the GUIs button. (Pop ups will appear without any use at this point)
 
 **Output**:
 
@@ -54,27 +56,19 @@ Start the analysis using the GUI's button.
 
 ---
 
-## Customization Options
+## Outlook
 
-### Energy Tolerance
-Adjust the variable energy_tolerance to control the precision of peak-to-element assignments:
-
-- High resolution: ±0.05 keV
-- Standard: ±0.1 keV
-
-### Peak Detection Parameters
-Modify the parameters in the find_peaks function to adjust the sensitivity of peak detection:
-
-- **height**: Minimum height of the peaks (relative or absolute).
-- **distance**: Minimum distance between detected peaks.
+### Peak detection
+It will be possible to include a peak detection. Currently, this detection is highly inaccurate and should only be used for reference purposes to identify peaks manually.
+I aim for an adjustable resolution with printed errors.
 
 ---
 
 ## Recommendations
 
-**Data Calibration**: Ensure that the energy axes of the spectra are properly calibrated.
-**Testing with Example Data**: Use known spectra to verify the script's functionality.
-**Error Handling**: The script includes basic error checks for missing files or incorrect formats.
+**Data**: Ensure that the landing energy and the beam current is homogeneous for all samples / compared samples.
+**Angles**: The landing beam should be 0° (or as recommended for your EDX).
+**Error Handling**: The script includes basic error checks for missing files or incorrect formats. 
 
 ---
 ## Reporting Issues
@@ -86,5 +80,3 @@ If you have any questions, suggestions, or need further assistance, feel free to
 - **Email**: teemoscutie@outlook.de
 - **GitHub**: [https://github.com/teemoscutie](https://github.com/teemoscutie)
 - **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/linh-zimmermann)
-
-I am happy to help or receive feedback regarding this project!
