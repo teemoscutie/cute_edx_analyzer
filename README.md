@@ -1,12 +1,27 @@
 # EDX Spectrum Analyzer
 ## Description
-This Python script provides a graphical user interface (GUI) for the analysis of EDX spectra. It enables the import of multiple spectrum files, -background correction-, and identification of element peaks based on their characteristic energies. This is my first script designed for non-python speakers with a GUI, so its currently quiet ugly.
+This Python script provides a **graphical user interface** for analyzing **Energy Dispersive X-ray Spectroscopy** (EDX) spectra. It enables users without python knowledge to load, process, and compare multiple EDX spectra. It aims to identify peaks in the future, but is currently only for referece purposes for manual element identification.
 
 ### Background correction is currently disabled due to implementation issues!
 
 ---
 
 ## Requirements
+
+### Python 3.XX
+```bash
+python3 --version
+```
+Make sure to download python if not installed. Also, check if pip is installed:
+
+```bash
+pip --version
+´´´
+If not, install pip with:
+
+```bash
+python -m ensurepip --upgrade
+´´´
 
 ### Installation of Required Libraries
 Ensure the following Python libraries are installed:
@@ -22,9 +37,9 @@ pip install pandas numpy scipy matplotlib plotly tkinter
 ## Preparing Input Files
 
 ### Characteristic Energies
-Ensure the file containing characteristic energies is prepared as follows:
 
-- File name: Energies_from_NIST.csv
+Ensure the file containing characteristic energies is prepared as following or use the data given:
+
 - File structure (example):
   
   | Element | Transition  | Theory (eV) | Unc (eV) | Direct (eV)  | Unc. (eV) |
@@ -67,7 +82,9 @@ I aim for an adjustable resolution with printed errors.
 ## Recommendations
 
 **Data**: Ensure that the landing energy and the beam current is homogeneous for all samples / compared samples.
+
 **Angles**: The landing beam should be 0° (or as recommended for your EDX).
+
 **Error Handling**: The script includes basic error checks for missing files or incorrect formats. 
 
 ---
