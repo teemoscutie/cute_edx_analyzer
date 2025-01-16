@@ -13,11 +13,9 @@ class EDXAnalyzerApp:
         self.master = master
         master.title("cute EDX Spectra Analysis")
 
-        # Add a canvas for the background watermark
         self.canvas = tk.Canvas(master, width=800, height=600, bg='white')
         self.canvas.grid(row=0, column=0, columnspan=2, rowspan=10, sticky='nsew')
 
-        # Add watermark text
         self.canvas.create_text(
             400, 300,
             text="cute EDX Analyzer",
@@ -32,63 +30,63 @@ class EDXAnalyzerApp:
         self.add_widgets()
 
     def add_widgets(self):
-        tk.Label(self.master, text="Spektren-Dateien (max. 4 Dateien):").grid(row=1, column=0, sticky='w')
-        self.spectra_btn = tk.Button(self.master, text="Dateien auswählen", command=self.load_spectra_files)
+        tk.Label(self.master, text="spectrum data (max. 4 files):").grid(row=1, column=0, sticky='w')
+        self.spectra_btn = tk.Button(self.master, text="select files", command=self.load_spectra_files)
         self.spectra_btn.grid(row=1, column=1)
 
-        tk.Label(self.master, text="Hintergrunddatei auswählen (optional):").grid(row=2, column=0, sticky='w')
+        tk.Label(self.master, text="select background file (optional):").grid(row=2, column=0, sticky='w')
         self.background_btn = tk.Button(self.master, text="Datei auswählen", command=self.load_background_file)
         self.background_btn.grid(row=2, column=1)
 
-        tk.Label(self.master, text="Referenzdatei auswählen (NIST-Daten):").grid(row=3, column=0, sticky='w')
-        self.reference_btn = tk.Button(self.master, text="Datei auswählen", command=self.load_reference_file)
+        tk.Label(self.master, text="select reference file (NIST file):").grid(row=3, column=0, sticky='w')
+        self.reference_btn = tk.Button(self.master, text="select data", command=self.load_reference_file)
         self.reference_btn.grid(row=3, column=1)
 
         self.analyze_btn = tk.Button(self.master, text="Analyse starten", command=self.analyze_spectra)
         self.analyze_btn.grid(row=4, column=0, pady=10)
 
-        self.group_selection_btn = tk.Button(self.master, text="Gruppen auswählen", command=self.show_group_selection)
+        self.group_selection_btn = tk.Button(self.master, text="select elements", command=self.show_group_selection)
         self.group_selection_btn.grid(row=4, column=1, pady=10)
 
-        self.status_label = tk.Label(self.master, text="Bitte wählen Sie die Dateien aus und starten Sie die Analyse.")
+        self.status_label = tk.Label(self.master, text="Select files and start analysis.")
         self.status_label.grid(row=5, column=0, columnspan=2)
 
     def load_spectra_files(self):
-        files = filedialog.askopenfilenames(title="Wählen Sie bis zu 4 Spektrendateien aus", filetypes=[("CSV-Dateien", "*.csv")])
+        files = filedialog.askopenfilenames(title="Select up to 4 spectrum files.", filetypes=[("CSV file", "*.csv")])
         if files:
             if len(files) > 4:
-                messagebox.showwarning("Warnung", "Sie können maximal 4 Dateien auswählen.")
+                messagebox.showwarning("Warning", "You can select a maximum of 4 files.")
             else:
                 self.spectra_files = files
-                self.status_label.config(text=f"{len(files)} Datei(en) für die Analyse ausgewählt.")
+                self.status_label.config(text=f"{len(files)} file(s) selected for analysis")
 
     def load_background_file(self):
-        file = filedialog.askopenfilename(title="Wählen Sie die Hintergrunddatei aus", filetypes=[("CSV-Dateien", "*.csv")])
+        file = filedialog.askopenfilename(title="Select background file", filetypes=[("CSV file", "*.csv")])
         if file:
             self.background_file = file
-            self.status_label.config(text="Hintergrunddatei ausgewählt.")
+            self.status_label.config(text="background file selected.")
 
     def load_reference_file(self):
-        file = filedialog.askopenfilename(title="Wählen Sie die Referenzdatei aus (NIST-Daten)", filetypes=[("CSV-Dateien", "*.csv")])
+        file = filedialog.askopenfilename(title="Select reference file (NIST file)", filetypes=[("CSV-Dateien", "*.csv")])
         if file:
             self.reference_file = file
-            self.status_label.config(text="Referenzdatei ausgewählt.")
+            self.status_label.config(text="reference file selected.")
 
     def analyze_spectra(self):
         if not hasattr(self, 'spectra_files') or not self.spectra_files:
-            messagebox.showwarning("Warnung", "Bitte wählen Sie die Spektrendateien aus.")
+            messagebox.showwarning("Warning", "Please select files for spectrum.")
             return
         if not hasattr(self, 'reference_file') or not self.reference_file:
-            messagebox.showwarning("Warnung", "Bitte wählen Sie die Referenzdatei aus.")
+            messagebox.showwarning("Warning", "Select a reference file.")
             return
         try:
             reference_data = pd.read_csv(self.reference_file, sep=',', encoding='utf-8')
             reference_data['Energy (eV)'] = pd.to_numeric(reference_data['Theory (eV)'], errors='coerce')
         except Exception as e:
-            messagebox.showerror("Fehler", f"Die Referenzdatei konnte nicht eingelesen werden: {e}")
+            messagebox.showerror("Error", f"Reference file could not be read: {e}")
             return
 
-        self.compare_spectra(self.spectra_files, reference_data, 'EDX Spektren Analyse')
+        self.compare_spectra(self.spectra_files, reference_data, 'EDX Spectrum Analysis')
 
     def compare_spectra(self, filenames, reference_data, title):
         spectra = []
@@ -98,14 +96,14 @@ class EDXAnalyzerApp:
         for filename in filenames:
             data, metadata = self.read_spectrum(filename)
             if data is None:
-                messagebox.showwarning("Warnung", f"Die Datei {filename} enthält keine gültigen Energiedaten.")
+                messagebox.showwarning("Warnung", f"File {filename} does not contain valid energies.")
                 continue
             data = self.normalize_spectrum(data, metadata)
             min_energy = min(min_energy, data['Energy_keV'].min())
             max_energy = max(max_energy, data['Energy_keV'].max())
 
         if min_energy == np.inf or max_energy == -np.inf:
-            messagebox.showwarning("Warnung", "Keine gültigen Spektraldaten gefunden.")
+            messagebox.showwarning("Warning", "no valid spectrum data found.")
             return
 
         common_energy = np.linspace(min_energy, max_energy, num=1000)
