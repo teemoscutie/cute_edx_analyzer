@@ -76,6 +76,7 @@ Ensure the file containing characteristic energies is prepared as following or u
 ### Peak detection
 It will be possible to include a peak detection. Currently, this detection is highly inaccurate and should only be used for reference purposes to identify peaks manually.
 I aim for an adjustable resolution with printed errors.
+Therefore, standards for script learing are required. Those are going to be implemented, to ensure a more accurate peak detection. Thus, EDX spectra from biologist undergraduates are used to understand given peak detection from TESCAN Clara Software. Furthermore, the sputtering material should provide limits for element detection. This is possible due to known precise element composition.
 
 ---
 
